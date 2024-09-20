@@ -9,22 +9,18 @@ class NavigationController(
     initialRoute: Route = Route(),
 ) {
     private var _routeStack = mutableListOf(initialRoute)
-    private val _currentRoute = MutableStateFlow(_routeStack.last())
-    val currentRoute: StateFlow<Route> = _currentRoute
     private val _navigationAction = MutableStateFlow<NavigationAction>(NavigationAction.Idle(_routeStack.last()))
     val navigationAction: StateFlow<NavigationAction> = _navigationAction
 
     fun navigate(route: Route) {
         _routeStack += route
-        _currentRoute.value = route
         _navigationAction.value = NavigationAction.Navigate(route)
     }
 
     fun navigateBack() {
         if (_routeStack.size > 1) {
             _routeStack = _routeStack.dropLast(1).toMutableList()
-            _currentRoute.value = _routeStack.last()
-            _navigationAction.value = NavigationAction.PopTo(_currentRoute.value)
+            _navigationAction.value = NavigationAction.PopTo(_routeStack.last())
         }
     }
 
@@ -32,14 +28,12 @@ class NavigationController(
         val index = _routeStack.indexOfLast(predicate)
         if (index != -1) {
             _routeStack = _routeStack.take(index + 1).toMutableList()
-            _currentRoute.value = _routeStack.last()
-            _navigationAction.value = NavigationAction.PopTo(_currentRoute.value)
+            _navigationAction.value = NavigationAction.PopTo(_routeStack.last())
         }
     }
 
     fun replace(route: Route) {
         _routeStack = (_routeStack.dropLast(1) + route).toMutableList()
-        _currentRoute.value = route
         _navigationAction.value = NavigationAction.Navigate(route)
     }
 
@@ -47,7 +41,6 @@ class NavigationController(
         val index = _routeStack.indexOfLast(predicate)
         if (index != -1) {
             _routeStack = (_routeStack.take(index + 1) + route).toMutableList()
-            _currentRoute.value = route
             _navigationAction.value = NavigationAction.Navigate(route)
         }
     }
