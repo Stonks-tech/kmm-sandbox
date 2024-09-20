@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="main_title">Main Page</string>
+    <string name="main_text">Hello from main page</string>
+    <string name="main_button_text">Go to Detail Page %1$d</string>
+
+    <string name="detail_title">Detail Page</string>
+    <string name="detail_text">Hello from detail page [%1$d]</string>
+</resources>

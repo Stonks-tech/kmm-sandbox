@@ -8,9 +8,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import kmmsandbox.composeapp.generated.resources.Res
+import kmmsandbox.composeapp.generated.resources.main_button_text
+import kmmsandbox.composeapp.generated.resources.main_text
+import kmmsandbox.composeapp.generated.resources.main_title
+import org.jetbrains.compose.resources.stringResource
 import tech.stonks.kmmsandbox.ui.navigation.NavigationController
 import tech.stonks.kmmsandbox.ui.page.detail.DetailRoute
 
@@ -20,7 +26,11 @@ fun MainPage(
 ) {
     Scaffold(
         topBar = {
-            Text("Main Page")
+            TopAppBar(
+                title = {
+                    Text(stringResource(Res.string.main_title))
+                }
+            )
         }
     ) {
         Column (
@@ -29,7 +39,7 @@ fun MainPage(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                "Hello from main page!",
+                stringResource(Res.string.main_text),
             )
             for(i in 0..5) {
                 Button(
@@ -37,7 +47,7 @@ fun MainPage(
                         navigationController.navigate(DetailRoute(i))
                     }
                 ) {
-                    Text("Go to Detail Page $i")
+                    Text(stringResource(Res.string.main_button_text, i))
                 }
             }
         }
