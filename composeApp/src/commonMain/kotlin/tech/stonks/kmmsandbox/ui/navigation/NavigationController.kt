@@ -11,16 +11,20 @@ class NavigationController(
     private var _routeStack = mutableListOf(initialRoute)
     private val _currentRoute = MutableStateFlow(_routeStack.last())
     val currentRoute: StateFlow<Route> = _currentRoute
+    private val _navigationAction = MutableStateFlow<NavigationAction>(NavigationAction.Idle(_routeStack.last()))
+    val navigationAction: StateFlow<NavigationAction> = _navigationAction
 
     fun navigate(route: Route) {
         _routeStack += route
         _currentRoute.value = route
+        _navigationAction.value = NavigationAction.Navigate(route)
     }
 
     fun navigateBack() {
         if (_routeStack.size > 1) {
             _routeStack = _routeStack.dropLast(1).toMutableList()
             _currentRoute.value = _routeStack.last()
+            _navigationAction.value = NavigationAction.PopTo(_currentRoute.value)
         }
     }
 
@@ -29,12 +33,14 @@ class NavigationController(
         if (index != -1) {
             _routeStack = _routeStack.take(index + 1).toMutableList()
             _currentRoute.value = _routeStack.last()
+            _navigationAction.value = NavigationAction.PopTo(_currentRoute.value)
         }
     }
 
     fun replace(route: Route) {
         _routeStack = (_routeStack.dropLast(1) + route).toMutableList()
         _currentRoute.value = route
+        _navigationAction.value = NavigationAction.Navigate(route)
     }
 
     fun replaceUntil(predicate: (Route) -> Boolean, route: Route) {
@@ -42,13 +48,25 @@ class NavigationController(
         if (index != -1) {
             _routeStack = (_routeStack.take(index + 1) + route).toMutableList()
             _currentRoute.value = route
+            _navigationAction.value = NavigationAction.Navigate(route)
         }
     }
+}
+
+sealed class NavigationAction {
+    abstract val route: Route
+    data class Idle(override val route: Route) : NavigationAction()
+    data class Navigate(override val route: Route) : NavigationAction()
+    data class PopTo(override val route: Route) : NavigationAction()
 }
 
 open class Route(val args: Map<String, Any> = emptyMap()) {
     @Composable
     open fun Content(controller: NavigationController, args: Map<String, Any>) {
+    }
+
+    override fun toString(): String {
+        return "${this::class.simpleName}(${args})"
     }
 }
 
