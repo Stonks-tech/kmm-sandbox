@@ -50,6 +50,7 @@ import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.stringResource
 import tech.stonks.kmmsandbox.ui.navigation.NavigationController
 import tech.stonks.kmmsandbox.ui.navigation.rememberNavigationController
+import tech.stonks.kmmsandbox.ui.page.animations.AnimationsRoute
 import tech.stonks.kmmsandbox.ui.page.detail.DetailRoute
 
 @Composable
@@ -123,14 +124,7 @@ fun MainPage(
                         text = stringResource(Res.string.main_menu_animations),
                         onClick = {
                             scope.launch {
-                                scaffoldState.drawerState.close()
-                            }
-                        }
-                    )
-                    DrawerItem(
-                        text = stringResource(Res.string.main_menu_pager),
-                        onClick = {
-                            scope.launch {
+                                navigationController.navigate(AnimationsRoute())
                                 scaffoldState.drawerState.close()
                             }
                         }

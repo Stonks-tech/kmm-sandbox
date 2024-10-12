@@ -13,4 +13,16 @@
 
     <string name="detail_title">Detail Page</string>
     <string name="detail_text">Hello from detail page [%1$d]</string>
+
+    <string name="animations_label_visibility">AnimatedVisibility</string>
+    <string name="animations_visibility_change">Change</string>
+    <string name="animations_visibility_example">Visible text</string>
+    <string name="animations_label_content">AnimatedContent</string>
+    <string name="animations_content_loading">Loading State</string>
+    <string name="animations_content_information">Information State</string>
+    <string name="animations_content_error">Error State</string>
+    <string name="animations_content_expand">Change state</string>
+    <string name="animations_label_lazy">LazyRow animation</string>
+    <string name="animations_label_state">animateColorAsState</string>
+    <string name="animations_lazy_add">Add</string>
 </resources>
