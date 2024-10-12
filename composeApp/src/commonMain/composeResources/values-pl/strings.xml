@@ -4,6 +4,12 @@
     <string name="main_text">Witam na stronie głównej</string>
     <string name="main_button_text">Przejdź do szczegółów %d</string>
 
+    <string name="main_menu_state">State</string>
+    <string name="main_menu_effects">Effects</string>
+    <string name="main_menu_remember">Remember</string>
+    <string name="main_menu_animations">Animacje</string>
+    <string name="main_menu_pager">View Pager</string>
+
     <string name="detail_title">Szczegóły</string>
     <string name="detail_text">Witaj w szczegółach [%d]</string>
 </resources>

@@ -2,7 +2,14 @@
 <resources>
     <string name="main_title">Main Page</string>
     <string name="main_text">Hello from main page</string>
+    <string name="main_counter_text">Counter %1$d</string>
     <string name="main_button_text">Go to Detail Page %1$d</string>
+
+    <string name="main_menu_state">State</string>
+    <string name="main_menu_effects">Effects</string>
+    <string name="main_menu_remember">Remember</string>
+    <string name="main_menu_animations">Animations</string>
+    <string name="main_menu_pager">View Pager</string>
 
     <string name="detail_title">Detail Page</string>
     <string name="detail_text">Hello from detail page [%1$d]</string>
