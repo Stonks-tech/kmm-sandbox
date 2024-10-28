@@ -28,7 +28,6 @@ fun StateSection() {
     val padding by animateDpAsState( //there is more such functions, for animating float, rect, offset etc.
         if (isToggled) 16.dp else 8.dp
     )
-
     Surface(
         onClick = {
             isToggled = !isToggled

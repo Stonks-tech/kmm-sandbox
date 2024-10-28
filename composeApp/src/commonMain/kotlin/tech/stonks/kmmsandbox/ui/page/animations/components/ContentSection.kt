@@ -54,6 +54,9 @@ fun ContentSection() {
 
         AnimatedContent(
             targetState = state, //currently selected state
+            contentKey = {
+                state::class.simpleName
+            },
             transitionSpec = { //animation definition
 
                 val direction = if (initialState.index > targetState.index)//imitate ViewPager behaviour

@@ -16,7 +16,6 @@ fun NavigationParent(
     controller: NavigationController = rememberNavigationController(),
 ) {
     val currentAction by controller.navigationAction.collectAsState()
-    //todo add BackHandler
     AnimatedContent(
         targetState = currentAction,
         transitionSpec = {
