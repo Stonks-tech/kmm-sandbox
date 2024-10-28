@@ -26,7 +26,7 @@ fun NavigationParent(
             }
         }
     ) { action ->
-        action.route.Content(controller, action.route.args)
+        action.route.Content(controller)
     }
 }
 

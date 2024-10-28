@@ -7,7 +7,7 @@ import tech.stonks.kmmsandbox.ui.navigation.Route
 
 class AnimationsRoute : Route() {
     @Composable
-    override fun Content(controller: NavigationController, args: Map<String, Any>) {
+    override fun Content(controller: NavigationController) {
         AnimationsPage(controller)
     }
 }

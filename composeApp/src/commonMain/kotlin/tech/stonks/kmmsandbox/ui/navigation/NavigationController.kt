@@ -53,13 +53,13 @@ sealed class NavigationAction {
     data class PopTo(override val route: Route) : NavigationAction()
 }
 
-open class Route(val args: Map<String, Any> = emptyMap()) {
+open class Route {
     @Composable
-    open fun Content(controller: NavigationController, args: Map<String, Any>) {
+    open fun Content(controller: NavigationController) {
     }
 
     override fun toString(): String {
-        return "${this::class.simpleName}(${args})"
+        return "${this::class.simpleName}"
     }
 }
 

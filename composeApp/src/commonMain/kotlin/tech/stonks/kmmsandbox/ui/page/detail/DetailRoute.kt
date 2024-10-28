@@ -6,9 +6,11 @@ import tech.stonks.kmmsandbox.ui.navigation.Route
 
 private const val ARG_INDEX = "index"
 
-data class DetailRoute(val index: Int): Route(args = mapOf(ARG_INDEX to index)) {
+data class DetailRoute(
+    private val index: Int
+): Route() {
     @Composable
-    override fun Content(controller: NavigationController, args: Map<String, Any>) {
-        DetailPage(controller, args[ARG_INDEX] as Int)
+    override fun Content(controller: NavigationController) {
+        DetailPage(controller, index)
     }
 }
