@@ -10,7 +10,6 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,7 +22,7 @@ import tech.stonks.kmmsandbox.ui.navigation.NavigationController
 @Composable
 fun DetailPage(
     controller: NavigationController,
-    index: Int
+    index: Int,
 ) {
     Scaffold(
         topBar = {
@@ -32,7 +31,9 @@ fun DetailPage(
                     Text(stringResource(Res.string.detail_title))
                 },
                 navigationIcon = {
-                    IconButton(onClick = { controller.navigateBack() }) {
+                    IconButton(
+                        onClick = { controller.navigateBack() }
+                    ) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
                     }
                 },
