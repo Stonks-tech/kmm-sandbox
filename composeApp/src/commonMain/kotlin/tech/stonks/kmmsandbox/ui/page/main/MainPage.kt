@@ -43,6 +43,7 @@ import kmmsandbox.composeapp.generated.resources.main_menu_animations
 import kmmsandbox.composeapp.generated.resources.main_menu_effects
 import kmmsandbox.composeapp.generated.resources.main_menu_pager
 import kmmsandbox.composeapp.generated.resources.main_menu_remember
+import kmmsandbox.composeapp.generated.resources.main_menu_shuffle
 import kmmsandbox.composeapp.generated.resources.main_menu_state
 import kmmsandbox.composeapp.generated.resources.main_text
 import kmmsandbox.composeapp.generated.resources.main_title
@@ -52,6 +53,8 @@ import tech.stonks.kmmsandbox.ui.navigation.NavigationController
 import tech.stonks.kmmsandbox.ui.navigation.rememberNavigationController
 import tech.stonks.kmmsandbox.ui.page.animations.AnimationsRoute
 import tech.stonks.kmmsandbox.ui.page.detail.DetailRoute
+import tech.stonks.kmmsandbox.ui.page.shuffle.ShufflePage
+import tech.stonks.kmmsandbox.ui.page.shuffle.ShuffleRoute
 
 @Composable
 fun MainPage(
@@ -125,6 +128,15 @@ fun MainPage(
                         onClick = {
                             scope.launch {
                                 navigationController.navigate(AnimationsRoute())
+                                scaffoldState.drawerState.close()
+                            }
+                        }
+                    )
+                    DrawerItem(
+                        text = stringResource(Res.string.main_menu_shuffle),
+                        onClick = {
+                            scope.launch {
+                                navigationController.navigate(ShuffleRoute())
                                 scaffoldState.drawerState.close()
                             }
                         }
